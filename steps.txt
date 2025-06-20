@@ -3,3 +3,7 @@ npx shadcn@latest init
 npx shadcn@latest add button
 npx shadcn@latest add accordion alert-dialog badge card dialog dropdown-menu input label progress radio-group select sonner tabs textarea
 npm install next-themes ->dark mode
+npm install @clerk/nextjs
+npm install @clerk/themes
+
+npx inngest-cli@latest dev
