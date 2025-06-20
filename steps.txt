@@ -7,3 +7,4 @@ npm install @clerk/nextjs
 npm install @clerk/themes
 
 npx inngest-cli@latest dev
+npm i -D prisma
