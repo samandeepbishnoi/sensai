@@ -12,3 +12,7 @@ npx prisma init
 npx prisma migrate dev --name create-models
 npm install react-hook-form zod @hookform/resolvers
 npm install @google/generative-ai
+npm i react-spinners
+npm i recharts
+npx shadcn@latest add tooltip
+npm install date-fns

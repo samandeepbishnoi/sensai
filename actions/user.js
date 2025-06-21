@@ -1,5 +1,5 @@
 "use server";
-
+import { generateAIInsights } from "./dashboard";
 import { db } from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
@@ -53,21 +53,17 @@ export async function updateUser(data) {
 
     if (!industryInsight) {
       console.log("⚠️ Industry not found. Creating new industry entry:", data.industry);
-
-      industryInsight = await db.industryInsight.create({
-        data: {
-          industry: data.industry,
-          salaryRanges: [],
-          growthRate: 0.0, // or fetch from external API later
-          demandLevel: "Medium",
-          topSkills: [],
-          marketOutlook: "Neutral",
-          keyTrends: [],
-          recommendedSkills: [],
-          nextUpdate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-        },
-      });
-
+      const insights = await generateAIInsights(data.industry);
+      
+          industryInsight = await db.industryInsight.create({
+            data: {
+              industry: data.industry,
+              ...insights,
+              nextUpdate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+            },
+          });
+      
+      
       console.log("✅ Industry created");
     }
 
