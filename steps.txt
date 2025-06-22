@@ -16,3 +16,7 @@ npm i react-spinners
 npm i recharts
 npx shadcn@latest add tooltip
 npm install date-fns
+
+npm install html2pdf.js or  npm install @react-pdf/renderer
+
+npm install @uiw/react-md-editor

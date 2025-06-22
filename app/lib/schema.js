@@ -27,11 +27,24 @@ export const onboardingSchema = z.object({
   ),
 });
 
+
 export const contactSchema = z.object({
   email: z.string().email("Invalid email address"),
   mobile: z.string().optional(),
-  linkedin: z.string().optional(),
-  twitter: z.string().optional(),
+  linkedin: z
+    .string()
+    .url("Must be a valid URL")
+    .regex(/^https:\/\/(www\.)?linkedin\.com\/.*$/, {
+      message: "Must be a valid LinkedIn URL",
+    })
+    .optional(),
+  github: z
+    .string()
+    .url("Must be a valid URL")
+    .regex(/^https:\/\/(www\.)?github\.com\/.*$/, {
+      message: "Must be a valid GitHub URL",
+    })
+    .optional(),
 });
 
 export const entrySchema = z
